@@ -1,5 +1,5 @@
 {
-  "name": "@perses-dev/prometheus-plugin",
+  "name": "@zonahe-perses-dev/prometheus-plugin",
   "version": "0.48.0",
   "description": "Prometheus plugin for Perses",
   "license": "Apache-2.0",
@@ -16,7 +16,6 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "postinstall": "concurrently \"npm:build:*\"",
     "clean": "rimraf dist/",
     "build": "concurrently \"npm:build:*\"",
     "build:cjs": "swc ./src -d dist/cjs --config-file ../.cjs.swcrc",
