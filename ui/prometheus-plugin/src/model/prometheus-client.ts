@@ -115,6 +115,7 @@ export function metricMetadata(
   queryOptions: QueryOptions
 ): Promise<MetricMetadataResponse> {
   const apiURI = `/api/v1/metadata`;
+  console.log('metricMetadata', params, queryOptions);
   return fetchWithGet<MetricMetadataRequestParameters, MetricMetadataResponse>(apiURI, params, queryOptions);
 }
 
@@ -128,14 +129,19 @@ export function series(params: SeriesRequestParameters, queryOptions: QueryOptio
 
 function fetchWithGet<T extends RequestParams<T>, TResponse>(apiURI: string, params: T, queryOptions: QueryOptions) {
   const { datasourceUrl, headers } = queryOptions;
-  console.log(headers);
+  console.log('get headers', headers);
 
   let url = `${datasourceUrl}${apiURI}`;
   const urlParams = createSearchParams(params).toString();
   if (urlParams !== '') {
     url += `?${urlParams}`;
   }
-  return fetchJson<TResponse>(url, { method: 'GET', headers });
+
+  const init = {
+    method: 'GET',
+    headers,
+  };
+  return fetchJson<TResponse>(url, init);
 }
 
 function fetchWithPost<T extends RequestParams<T>, TResponse>(apiURI: string, params: T, queryOptions: QueryOptions) {
