@@ -12,7 +12,7 @@
 // limitations under the License.
 
 import { useMemo } from 'react';
-import * as DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { Box, Theme } from '@mui/material';
 import { PanelProps, useReplaceVariablesInString } from '@perses-dev/plugin-system';
