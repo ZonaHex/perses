@@ -30,6 +30,7 @@ import {
   useFormatState,
   useMinStepState,
 } from './query-editor-model';
+import { CompleteConfiguration } from '@prometheus-io/codemirror-promql';
 
 /**
  * The options editor component for editing a PrometheusTimeSeriesQuery's spec.
@@ -41,7 +42,10 @@ export function PrometheusTimeSeriesQueryEditor(props: PrometheusTimeSeriesQuery
   const datasourceSelectLabelID = `prom-datasource-label-${selectedDatasource.name || 'default'}`;
 
   const { data: client } = useDatasourceClient<PrometheusClient>(selectedDatasource);
+
   const promURL = client?.options.datasourceUrl;
+  const promHeaders = client?.options.headers;
+  const completeConfig = { remote: { url: promURL, requestHeaders: promHeaders } } as CompleteConfiguration;
   const { data: datasourceResource } = useDatasource(selectedDatasource);
 
   const { query, handleQueryChange, handleQueryBlur } = useQueryState(props);
@@ -80,7 +84,7 @@ export function PrometheusTimeSeriesQueryEditor(props: PrometheusTimeSeriesQuery
         />
       </FormControl>
       <PromQLEditor
-        completeConfig={{ remote: { url: promURL } }}
+        completeConfig={completeConfig}
         value={query}
         onChange={handleQueryChange}
         onBlur={handleQueryBlur}

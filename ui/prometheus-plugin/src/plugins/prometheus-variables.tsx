@@ -40,6 +40,7 @@ import {
   PrometheusPromQLVariableOptions,
 } from './types';
 import { MatcherEditor } from './MatcherEditor';
+import { CompleteConfiguration } from '@prometheus-io/codemirror-promql';
 
 function PrometheusLabelValuesVariableEditor(props: OptionsEditorProps<PrometheusLabelValuesVariableOptions>) {
   const { onChange, value } = props;
@@ -145,6 +146,8 @@ function PrometheusPromQLVariableEditor(props: OptionsEditorProps<PrometheusProm
 
   const { data: client } = useDatasourceClient<PrometheusClient>(selectedDatasource);
   const promURL = client?.options.datasourceUrl;
+  const promHeaders = client?.options.headers;
+  const completeConfig = { remote: { url: promURL, requestHeaders: promHeaders } } as CompleteConfiguration;
 
   const handleDatasourceChange: DatasourceSelectProps['onChange'] = (next) => {
     if (isPrometheusDatasourceSelector(next)) {
@@ -174,7 +177,7 @@ function PrometheusPromQLVariableEditor(props: OptionsEditorProps<PrometheusProm
         />
       </FormControl>
       <PromQLEditor
-        completeConfig={{ remote: { url: promURL } }}
+        completeConfig={completeConfig}
         value={value.expr}
         onChange={(query) => {
           props.onChange({ ...props.value, expr: query });

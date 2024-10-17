@@ -146,7 +146,7 @@ function fetchWithGet<T extends RequestParams<T>, TResponse>(apiURI: string, par
 
 function fetchWithPost<T extends RequestParams<T>, TResponse>(apiURI: string, params: T, queryOptions: QueryOptions) {
   const { datasourceUrl, headers } = queryOptions;
-  console.log(headers);
+  console.log('new post 5', headers);
   const url = `${datasourceUrl}${apiURI}`;
   const init = {
     method: 'POST',
