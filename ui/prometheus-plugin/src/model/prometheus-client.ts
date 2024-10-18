@@ -115,7 +115,6 @@ export function metricMetadata(
   queryOptions: QueryOptions
 ): Promise<MetricMetadataResponse> {
   const apiURI = `/api/v1/metadata`;
-  console.log('metricMetadata', params, queryOptions);
   return fetchWithGet<MetricMetadataRequestParameters, MetricMetadataResponse>(apiURI, params, queryOptions);
 }
 
@@ -129,7 +128,6 @@ export function series(params: SeriesRequestParameters, queryOptions: QueryOptio
 
 function fetchWithGet<T extends RequestParams<T>, TResponse>(apiURI: string, params: T, queryOptions: QueryOptions) {
   const { datasourceUrl, headers } = queryOptions;
-  console.log('get headers', headers);
 
   let url = `${datasourceUrl}${apiURI}`;
   const urlParams = createSearchParams(params).toString();
@@ -146,7 +144,6 @@ function fetchWithGet<T extends RequestParams<T>, TResponse>(apiURI: string, par
 
 function fetchWithPost<T extends RequestParams<T>, TResponse>(apiURI: string, params: T, queryOptions: QueryOptions) {
   const { datasourceUrl, headers } = queryOptions;
-  console.log('new post 5', headers);
   const url = `${datasourceUrl}${apiURI}`;
   const init = {
     method: 'POST',

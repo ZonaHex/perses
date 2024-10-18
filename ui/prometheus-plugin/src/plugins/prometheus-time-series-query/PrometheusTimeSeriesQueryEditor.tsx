@@ -43,16 +43,15 @@ export function PrometheusTimeSeriesQueryEditor(props: PrometheusTimeSeriesQuery
 
   const { data: client } = useDatasourceClient<PrometheusClient>(selectedDatasource);
 
-  // const promURL = client?.options.datasourceUrl;
-  // const promHeaders = client?.options.headers;
-  // const completeConfig = { remote: { url: promURL, requestHeaders: promHeaders } } as CompleteConfiguration;
   const { data: datasourceResource } = useDatasource(selectedDatasource);
-
   const promURL = datasourceResource?.plugin.spec.directUrl ?? client?.options.datasourceUrl;
-  const completeConfig = {
-    remote: { url: promURL, requestHeaders: (datasourceResource?.plugin.spec.proxy as any).spec.headers },
-  } as CompleteConfiguration;
-  console.log(completeConfig);
+  let completeConfig;
+  if (datasourceResource?.plugin.spec.proxy && (datasourceResource?.plugin.spec.proxy as any).spec.headers) {
+    const promHeaders = (datasourceResource?.plugin.spec.proxy as any).spec.headers;
+    completeConfig = { remote: { url: promURL, requestHeaders: promHeaders } } as CompleteConfiguration;
+  } else {
+    completeConfig = { remote: { url: promURL } } as CompleteConfiguration;
+  }
 
   const { query, handleQueryChange, handleQueryBlur } = useQueryState(props);
   const { format, handleFormatChange, handleFormatBlur } = useFormatState(props);
