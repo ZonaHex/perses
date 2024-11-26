@@ -1,15 +1,15 @@
 {
   "name": "@zonahe-perses-dev/panels-plugin",
-  "version": "0.48.0",
+  "version": "0.49.0",
   "description": "Core panels plugin for Perses",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/perses/perses/blob/main/README.md",
+  "homepage": "https://github.com/ZonaHex/perses/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perses/perses.git"
+    "url": "git+https://github.com/ZonaHex/perses.git"
   },
   "bugs": {
-    "url": "https://github.com/perses/perses/issues"
+    "url": "https://github.com/ZonaHex/perses/issues"
   },
   "module": "dist/index.js",
   "main": "dist/cjs/index.js",
@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "@mui/x-data-grid": "^7.6.2",
-    "@perses-dev/components": "0.48.0",
-    "@perses-dev/core": "0.48.0",
-    "@perses-dev/plugin-system": "0.48.0",
+    "@perses-dev/components": "0.49.0",
+    "@perses-dev/core": "0.49.0",
+    "@perses-dev/plugin-system": "0.49.0",
     "color-hash": "^2.0.2",
     "date-fns": "^2.28.0",
     "dompurify": "^2.4.0",
@@ -51,7 +51,7 @@
     "plugin.json"
   ],
   "devDependencies": {
-    "@perses-dev/internal-utils": "0.48.0",
+    "@perses-dev/internal-utils": "0.49.0",
     "@types/color-hash": "^1.0.2",
     "@types/dompurify": "^2.3.4",
     "@types/marked": "^4.0.7"
