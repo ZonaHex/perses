@@ -11,8 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This file is edited by ZonaHex in https://github.com/ZonaHex/perses for Greptime.
+
 import { useMemo } from 'react';
-import * as DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { Box, Theme } from '@mui/material';
 import { PanelProps, useReplaceVariablesInString } from '@perses-dev/plugin-system';

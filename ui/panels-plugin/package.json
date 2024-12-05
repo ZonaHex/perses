@@ -1,15 +1,15 @@
 {
-  "name": "@perses-dev/panels-plugin",
+  "name": "@zonahe-perses-dev/panels-plugin",
   "version": "0.49.0",
   "description": "Core panels plugin for Perses",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/perses/perses/blob/main/README.md",
+  "homepage": "https://github.com/ZonaHex/perses/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perses/perses.git"
+    "url": "git+https://github.com/ZonaHex/perses.git"
   },
   "bugs": {
-    "url": "https://github.com/perses/perses/issues"
+    "url": "https://github.com/ZonaHex/perses/issues"
   },
   "module": "dist/index.js",
   "main": "dist/cjs/index.js",
